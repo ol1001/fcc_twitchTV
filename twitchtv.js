@@ -1,15 +1,21 @@
 $(document).ready(function () {
+    var activeTab = $(".active"),
+        listItem = $("li.navItem:not(.active)");
 
-    $("li.navItem").mouseenter(
+    listItem.hover(
         function () {
-            var currentListItem = $(this)[0];
-            console.log(currentListItem.find("a"));
-            //currentLink = currentListItem.children("a");
-            //currentLink.innerHTML = "ok";
-            console.log(currentLink);
+            var currentText = this.id,
+                currentRef = "#" + currentText + "Streams",
+                currentLink = $("<a></a>").attr("href", currentRef).text(currentText);
+
+            activeTab.css("width", "24px").find("a").hide();
+            $(this).css("width", "72px").append(currentLink);
+
+        }, function () {
+            $(this).empty().css("width", "24px");
+            activeTab.css("width", "72px").find("a").show();
 
         }
     );
-
 });
 
