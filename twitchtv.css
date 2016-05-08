@@ -1,4 +1,4 @@
-body, nav, section,h1, ul, li, a {
+body, nav, section, h1, ul, li, a {
     margin: 0;
     padding: 0;
 }
@@ -6,13 +6,16 @@ body, nav, section,h1, ul, li, a {
 body {
     font-family: 'Average Sans', sans-serif;
 }
+
 header {
     text-align: center;
-    margin-top: 20px;
+    margin: 24px 0 12px 0;
 }
+
 h1 {
-    color: #016367;
+    color: #4B6154;
 }
+
 ul#nav-menu {
     width: 120px;
     margin: 32px auto;
@@ -21,7 +24,6 @@ ul#nav-menu {
     overflow: hidden;
     border-radius: 2px;
 }
-
 ul#nav-menu li {
     display: inline;
     float: left;
@@ -29,39 +31,51 @@ ul#nav-menu li {
     height: 24px;
     line-height: 24px;
 }
-
 ul#nav-menu li:first-child {
     width: 72px;
 }
-
 ul#nav-menu li a {
     text-transform: capitalize;
     text-decoration: none;
-    color:#F6FCEB;
+    color: #E7F5DC;
 }
-
 ul#nav-menu li#all {
-    background-color: #016367;
-}
-
-ul#nav-menu li#online {
-    background-color: #44AF92;
+    background-color: #4B6154;
 }
 
 ul#nav-menu li#offline {
-    background-color:#9FEDD4;
+    background-color: #ABB9A2;
 }
 ul#nav-menu li#offline a {
-    color:#016367;
+    color: #fff;
 }
-
+ul#nav-menu li#online {
+    background-color: #94D6BA;
+}
+ul#nav-menu li#online a {
+    color: #4B6154;
+}
 hr {
     clear: both;
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(1, 99, 103, 0.75), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(75, 97, 84, 0.75), rgba(0, 0, 0, 0));
 }
-
 li.active {
     width: 72px;
+}
+section {
+    margin: 0;
+
+}
+section ul {
+    display: block;
+    width: 216px;
+    margin: 0 auto;
+    list-style: none;
+    color: #4B6154;
+
+}
+.streamers li {
+    line-height: 2em;
 }

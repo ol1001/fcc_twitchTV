@@ -42,20 +42,22 @@ Promise.all(allPromises).then(function (values) {
         }
     }
 
-
+    createSectionContent(online.concat(offline),"all");
     console.log("Online: " + online);
+    createSectionContent(online, "online");
     console.log("Offline: " + offline);
     createSectionContent(offline, "offline");
 });
 
 function createSectionContent(streamItems, status) {
     var currentSection = $("section#" + status + "Streams"),
-        sectionHeader = document.createElement("h3"),
-        streamList = document.createElement('ul');
+        streamList = $('<ul></ul>');
 
-    if (!streamItems) return;
+    if (!streamItems) {
+        alert ("There is no streamer "+status+" now");
+        return;
+    }
 
-    sectionHeader.textContent = status;
 
     $.each(streamItems, function (i, stream) {
         $('<li/>')
@@ -63,7 +65,7 @@ function createSectionContent(streamItems, status) {
             .text(stream);
     });
 
-    currentSection.append(sectionHeader, streamList);
+    currentSection.append(streamList);
 }
 
 
