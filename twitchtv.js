@@ -20,13 +20,14 @@ $(document).ready(function () {
 
 });
 
-
 var allPromises = [],
     streamersNames = ["esl_sc2", "freecodecamp", "storbeck", "terakilobyte", "habathcx", "thomasballinger", "noobs2ninjas", "beohoff"];
 
 streamersNames.forEach(function (item) {
     allPromises.push($.getJSON('https://api.twitch.tv/kraken/streams/' + item));
 });
+
+
 
 Promise.all(allPromises).then(function (values) {
     var online = [],
@@ -42,10 +43,9 @@ Promise.all(allPromises).then(function (values) {
         }
     }
 
-    createSectionContent(online.concat(offline),"all");
-    console.log("Online: " + online);
+
     createSectionContent(online, "online");
-    console.log("Offline: " + offline);
+
     createSectionContent(offline, "offline");
 });
 
@@ -57,16 +57,23 @@ function createSectionContent(streamItems, status) {
         alert ("There is no streamer "+status+" now");
         return;
     }
-
-
     $.each(streamItems, function (i, stream) {
         $('<li/>')
-            .appendTo(streamList)
-            .text(stream);
+            .append(
+            $('</i>').attr('class','fa fa-power-off'))
+            .text(stream)
+            .appendTo(streamList);
+
     });
 
     currentSection.append(streamList);
 }
+
+
+
+
+
+
 
 
 
