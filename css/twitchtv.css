@@ -1,0 +1,106 @@
+body, nav, section,h1, ul, li, a {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Average Sans', sans-serif;
+}
+header {
+    text-align: center;
+    margin-top: 20px;
+}
+h1 {
+    color: #016367;
+}
+ul#nav-menu {
+    width: 120px;
+    margin: 32px auto;
+    height: 24px;
+    list-style-type: none;
+}
+
+ul#nav-menu li {
+    display: inline;
+    float: left;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+}
+ul#nav-menu li:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+ul#nav-menu li:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+ul#nav-menu li a {
+    text-transform: capitalize;
+    text-decoration: none;
+    color:#F6FCEB;
+}
+
+ul#nav-menu li#all {
+    background-color: #016367;
+}
+
+ul#nav-menu li#online {
+    background-color: #44AF92;
+}
+
+ul#nav-menu li#offline {
+    background-color:#9FEDD4;
+}
+ul#nav-menu li#offline a {
+    color:#016367;
+}
+
+hr {
+    clear: both;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(1, 99, 103, 0.75), rgba(0, 0, 0, 0));
+}
+
+ul.streamers {
+
+    list-style: none;
+
+}
+ul.streamers li {
+    margin-top:8px;
+
+
+}
+ul.streamers li a{
+    display: block;
+    min-height: 54px;
+    line-height: 54px;
+    color: #016367;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+img.streamLogo {
+    border-radius: 36px/18px;
+    width: 54px;
+    height: 54px;
+    margin-right: 18px;
+    float: left;
+}
+ul.streamers li a span.streamStatus {
+
+    text-transform: lowercase;
+    font-style: italic;
+}
+section#content {
+    width: 56%;
+    margin: 0 auto;
+}
+ul#nav-menu li.activeTab {
+    width: 72px;
+}
+li.hiddenTab a {
+    display: none;
+}
