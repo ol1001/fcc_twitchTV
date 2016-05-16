@@ -18,9 +18,6 @@ ul#nav-menu {
     margin: 32px auto;
     height: 24px;
     list-style-type: none;
-    overflow: hidden;
-    /*border: 1px solid #9ac0c6;*/
-    border-radius: 2px;
 }
 
 ul#nav-menu li {
@@ -31,10 +28,15 @@ ul#nav-menu li {
     line-height: 24px;
 }
 ul#nav-menu li:first-child {
-    width: 72px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
 }
-
+ul#nav-menu li:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
 ul#nav-menu li a {
+    text-transform: capitalize;
     text-decoration: none;
     color:#F6FCEB;
 }
@@ -60,6 +62,45 @@ hr {
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(1, 99, 103, 0.75), rgba(0, 0, 0, 0));
 }
-.hide {
+
+ul.streamers {
+
+    list-style: none;
+
+}
+ul.streamers li {
+    margin-top:8px;
+
+
+}
+ul.streamers li a{
+    display: block;
+    min-height: 54px;
+    line-height: 54px;
+    color: #016367;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+img.streamLogo {
+    border-radius: 36px/18px;
+    width: 54px;
+    height: 54px;
+    margin-right: 18px;
+    float: left;
+}
+ul.streamers li a span.streamStatus {
+
+    text-transform: lowercase;
+    font-style: italic;
+}
+section#content {
+    width: 56%;
+    margin: 0 auto;
+}
+ul#nav-menu li.activeTab {
+    width: 72px;
+}
+li.hiddenTab a {
     display: none;
 }
