@@ -1,14 +1,21 @@
 $(document).ready(function () {
-    var listItem = $("li.navItem:not(:first)"),
+    var listItem = $("li.navItem"),
         firstListItem = $("li.navItem:first");
+    const HIDDEN_TAB_CLASS = "hiddenTab";
+    const ACTIVE_TAB_CLASS = "activeTab";
 
     listItem.hover(
         function () {
-            firstListItem.toggleClass("hiddenTab").toggleClass("activeTab");
-           $(this).toggleClass("activeTab").toggleClass("hiddenTab");
-        }, function () {
-            firstListItem.toggleClass("activeTab").toggleClass("hiddenTab");
-            $(this).toggleClass("hiddenTab").toggleClass("activeTab");
+            var currentTab = $(this);
+
+            if (currentTab.hasClass(HIDDEN_TAB_CLASS)) {
+                listItem.removeClass(ACTIVE_TAB_CLASS).addClass(HIDDEN_TAB_CLASS);
+                currentTab.removeClass(HIDDEN_TAB_CLASS).addClass(ACTIVE_TAB_CLASS);
+            }
+        },
+        function () {
+            listItem.removeClass(ACTIVE_TAB_CLASS).addClass(HIDDEN_TAB_CLASS);
+            firstListItem.removeClass(HIDDEN_TAB_CLASS).addClass(ACTIVE_TAB_CLASS);
         }
     );
 
@@ -17,7 +24,7 @@ $(document).ready(function () {
 
             var currentTab = $(this).attr("id");
 
-            if (currentTab == "online"){
+            if (currentTab == "online") {
                 $("li.onlineStreamers").show();
                 $("li.offlineStreamers").hide();
             } else if (currentTab == "offline") {
