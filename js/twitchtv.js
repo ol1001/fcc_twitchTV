@@ -1,41 +1,51 @@
 $(document).ready(function () {
+
     var listItem = $("li.navItem"),
-        firstListItem = $("li.navItem:first");
+        firstListItem = $("li.navItem:first"),
+        selectedItem = firstListItem.attr("id");
+
     const HIDDEN_TAB_CLASS = "hiddenTab";
     const ACTIVE_TAB_CLASS = "activeTab";
 
-    listItem.hover(
-        function () {
-            var currentTab = $(this);
+    listItem.on("click mouseover mouseout", function (event) {
+        var currentEventType = event.type;
 
-            if (currentTab.hasClass(HIDDEN_TAB_CLASS)) {
-                listItem.removeClass(ACTIVE_TAB_CLASS).addClass(HIDDEN_TAB_CLASS);
-                currentTab.removeClass(HIDDEN_TAB_CLASS).addClass(ACTIVE_TAB_CLASS);
-            }
-        },
-        function () {
-            listItem.removeClass(ACTIVE_TAB_CLASS).addClass(HIDDEN_TAB_CLASS);
-            firstListItem.removeClass(HIDDEN_TAB_CLASS).addClass(ACTIVE_TAB_CLASS);
+        if (currentEventType == "mouseover") {
+            mouseoverHandler($(this).attr("id"));
+        } else if (currentEventType == "mouseout") {
+            mouseoutHandler($(this).attr("id"));
+        } else if (currentEventType == "click") {
+            mouseclickHandler($(this).attr("id"));
         }
-    );
+    });
 
-    $("li.navItem").click(
-        function () {
-
-            var currentTab = $(this).attr("id");
-
-            if (currentTab == "online") {
-                $("li.onlineStreamers").show();
-                $("li.offlineStreamers").hide();
-            } else if (currentTab == "offline") {
-                $("li.offlineStreamers").show();
-                $("li.onlineStreamers").hide();
-            } else {
-                $("li.offlineStreamers").show();
-                $("li.onlineStreamers").show();
-            }
+    function mouseoverHandler(targetItem) {
+        if (targetItem != selectedItem) {
+            $("li#" + selectedItem).removeClass(ACTIVE_TAB_CLASS).addClass(HIDDEN_TAB_CLASS);
+            $("li#" + targetItem).removeClass(HIDDEN_TAB_CLASS).addClass(ACTIVE_TAB_CLASS);
         }
-    );
+    }
+
+    function mouseoutHandler(targetItem) {
+        if (targetItem != selectedItem) {
+            $("li#" + targetItem).removeClass(ACTIVE_TAB_CLASS).addClass(HIDDEN_TAB_CLASS);
+            $("li#" + selectedItem).removeClass(HIDDEN_TAB_CLASS).addClass(ACTIVE_TAB_CLASS);
+        }
+    }
+
+    function mouseclickHandler(targetItem) {
+        selectedItem = targetItem;
+        if (selectedItem == "online") {
+            $("li.onlineStreamers").show();
+            $("li.offlineStreamers").hide();
+        } else if (selectedItem == "offline") {
+            $("li.offlineStreamers").show();
+            $("li.onlineStreamers").hide();
+        } else if (selectedItem == "all") {
+            $("li.offlineStreamers").show();
+            $("li.onlineStreamers").show();
+        }
+    }
 
     var allPromises = [],
         streamersNamesArray = ["OgamingSC2", "freecodecamp", "brunofin", "storbeck", "terakilobyte", "habathcx", "RobotCaleb", "thomasballinger", "noobs2ninjas", "beohoff"];
